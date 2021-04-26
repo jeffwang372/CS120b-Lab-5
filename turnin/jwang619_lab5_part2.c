@@ -27,8 +27,19 @@ void SMFunc() {
                         SMState = Init;
                         break;
                 case Init:
-                        SMState = Wait;
-                        break;
+			if((inputA & 0x03) == 0x01) {
+				SMState = Inc;
+			}
+			else if((inputA & 0x03) == 0x03) {
+                                SMState = Reset;
+                        }
+			else if((inputA & 0x03) == 0x02) {
+                                SMState = Dec;
+                        }
+			else {
+				SMState = Wait;
+			}
+			break;
                 case Wait:
                         if((inputA & 0x03) == 0x01) {
                                 SMState = Inc;

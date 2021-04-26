@@ -27,19 +27,24 @@
 #    },
 #    ]
 
-tests = [ {'description': 'PINA: 0xFF => PORTC: 0x40',
-    'steps': [ {'inputs': [('PINA',0xFF)], 'iterations': 5 } ],
-    'expected': [('PORTC',0x40)],
+tests = [ {'description': 'PINA: 0xFF, 0xFC, 0xFF, 0xFE, 0xFF, 0xFE, 0xFF, 0xFD, 0xFF => PORTC: 0x01',
+    'steps': [{'inputs': [('PINA', 0xFF)], 'iterations': 2},
+        {'inputs': [('PINA', 0xFC)], 'iterations': 2},
+        {'inputs': [('PINA', 0xFF)], 'iterations': 2},
+        {'inputs': [('PINA', 0xFE)], 'iterations': 2},
+        {'inputs': [('PINA', 0xFF)], 'iterations': 2},
+    	{'inputs': [('PINA', 0xFE)], 'iterations': 2},
+	{'inputs': [('PINA', 0xFF)], 'iterations': 2},
+	{'inputs': [('PINA', 0xFD)], 'iterations': 2},
+	{'inputs': [('PINA', 0xFF)], 'iterations': 2}],
+    'expected': [('PORTC',0x01)],
     },
-    {'description': 'PINA: 0xF8 => PORTC: 0x3C',
-    'steps': [ {'inputs': [('PINA',0xF8)], 'iterations': 5 } ],
-    'expected': [('PORTC',0x3C)],
-    },
-    {'description': 'PINA: 0xF0 => PORTC: 0x3F',
-    'steps': [ {'inputs': [('PINA',0xF0)], 'iterations': 5 } ],
-    'expected': [('PORTC',0x3F)],
+    {'description': 'PINA: 0xFF => PORTC: 0x01',
+    'steps': [{'inputs': [('PINA', 0xFF)], 'iterations': 2}],
+    'expected': [('PORTC',0x01)],
     },
     ]
+watch = ['SMState']
 
 # Optionally you can add a set of "watch" variables these need to be global or static and may need
 # to be scoped at the function level (for static variables) if there are naming conflicts. The 
