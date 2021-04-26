@@ -27,16 +27,16 @@
 #    },
 #    ]
 
-tests = [ {'description': 'PINA: 0x00 => PORTC: 0x40',
-    'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 5 } ],
+tests = [ {'description': 'PINA: 0xFF => PORTC: 0x40',
+    'steps': [ {'inputs': [('PINA',0xFF)], 'iterations': 5 } ],
     'expected': [('PORTC',0x40)],
     },
-    {'description': 'PINA: 0x07 => PORTC: 0x3C',
-    'steps': [ {'inputs': [('PINA',0x07)], 'iterations': 5 } ],
+    {'description': 'PINA: 0xF8 => PORTC: 0x3C',
+    'steps': [ {'inputs': [('PINA',0xF8)], 'iterations': 5 } ],
     'expected': [('PORTC',0x3C)],
     },
-    {'description': 'PINA: 0x0F => PORTC: 0x3F',
-    'steps': [ {'inputs': [('PINA',0x0F)], 'iterations': 5 } ],
+    {'description': 'PINA: 0xF0 => PORTC: 0x3F',
+    'steps': [ {'inputs': [('PINA',0xF0)], 'iterations': 5 } ],
     'expected': [('PORTC',0x3F)],
     },
     ]

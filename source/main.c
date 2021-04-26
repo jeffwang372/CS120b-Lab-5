@@ -23,7 +23,7 @@ int main(void) {
 	unsigned char outC = 0x00;
     while (1) {
 	outC = 0x00;
-	fuelLevel = PINA & 0x0F;
+	fuelLevel = ~PINA & 0x0F;
 	if(fuelLevel == 1 || fuelLevel == 2) {
 		outC = 0x20;
 	}
